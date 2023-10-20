@@ -22,7 +22,7 @@
 		
 		$.ajax({
 			type: 'POST',
-			url: '//airaju94.42web.io/ajax.php',
+			url: 'https://airaju94.000webhostapp.com/ajax.php',
 			dataType: 'JSON',
 			data: $(this).serialize(),
 			
