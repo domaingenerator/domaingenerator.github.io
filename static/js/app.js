@@ -1,4 +1,4 @@
-	/*
+/*
 	*
 	* ---------------------------
 	* | Domain Name Generator   |
@@ -9,66 +9,4 @@
 	* @Copyright: 2023
 	*
 	*/
-	
-	
-	$(document).on("submit", ".generator-form", function(e){
-		e.preventDefault();
-		var msg = $(".message");
-		var btn = $(".gd");
-		
-		msg.html('Generating...');
-		
-		btn.attr('disabled', 'disable');
-		
-		$.ajax({
-			type: 'POST',
-			url: 'https://airaju94.000webhostapp.com/ajax.php',
-			dataType: 'JSON',
-			data: $(this).serialize(),
-			
-			error: function(xhr, status, message)
-			{
-				msg.html( '<div class="alert alert-danger rounded-1 p-2"><i class="bi bi-exclamation-triangle-fill me-1"></i> '+message+' </div>' );
-				btn.removeAttr('disabled');
-				send_event({"error":"http_error"}, 'error');
-			},
-			
-			success: function(data)
-			{
-				if( data.status === 'success' )
-				{
-					msg.html( '<div class="alert alert-success rounded-1 p-2"><i class="bi bi-check-circle-fill me-1"></i> '+data.message+' </div>' );
-					btn.removeAttr('disabled');
-					$("#gd").html(data.data);
-					send_event({"success":"domain_generate_success"}, 'success');
-				}else{
-					
-					msg.html( '<div class="alert alert-danger rounded-1 p-2"><i class="bi bi-exclamation-triangle-fill me-1"></i> '+data.message+' </div>' );
-					btn.removeAttr('disabled');
-					send_event({"error":"domain_generate_error"}, 'error');
-				}
-								
-			}
-		})
-		
-	})
-
-	/* Google Analytics Event Handler */
-	function send_event( events, eventName = 'user_activity' )
-	{
-		if( typeof gtag == 'function' ){
-			if(typeof events == 'object' || !Array.isArray( events ) || events !== null )
-			{
-				gtag( 'event', eventName, events );
-			}
-		}
-	}
-	
-	$(".event").on("click", function(){
-		
-		var tagName = $(this)[0].tagName;
-		var tagValue = $(this)[0].textContent.trim();
-		
-		send_event({tagName:tagValue}, tagName);
-		
-	})
+var domainLimit=100,domainLength=15,lang="eng";function domain_loop(t){var e=1==t.hasOwnProperty("results")&&t.results;if(e){var s,a,r,l,n="";return e.forEach((function(t,e){"available"===t.availability?(s="border-success",a="bi-check-circle-fill",r="text-success",l='<a href="#!" class="btn btn-sm btn-success d-block rounded-1 shadow-sm event">Register</a>'):(s="border-danger",a="bi-x-circle-fill",r="text-danger",l='<button disabled="" href="#!" class="btn btn-sm btn-outline-danger d-block">Already Registered</button>'),n+='<div class="clearfix p-3 mb-3 rounded-3 shadow '+s+' border-start border-5"> \t\t\t\t\t\t<div class="float-start"> \t\t\t\t\t\t\t<h3 class="fw-bold fs-3 d-block '+r+'"><i class="bi '+a+'"></i> '+t.name+'</h2> \t\t\t\t\t\t\t<div class="d-flex"> \t\t\t\t\t\t\t\t<small class="me-1 text-secondary">'+ucwords(t.sldSuggestionType)+' •</small> \t\t\t\t\t\t\t\t<small class="me-1 text-secondary">'+ucwords(t.tldRankingType)+'</small> \t\t\t\t\t\t\t\t<small class="text-secondary">Length: '+t.name.split(".")[0].length+'</small> \t\t\t\t\t\t\t</div> \t\t\t\t\t\t</div> \t\t\t\t\t\t<div class="float-end"> \t\t\t\t\t\t\t<div class="text-center"> \t\t\t\t\t\t\t\t'+l+' \t\t\t\t\t\t\t\t<small class="d-block mt-1 text-secondary">'+ucwords(t.availability)+"</small> \t\t\t\t\t\t\t</div> \t\t\t\t\t\t</div> \t\t\t\t\t</div> \t\t\t\t"})),'<div class="p-3"><h2 class="fw-bold fs-2 text-center text-primary">Generated Domain Names</h2><div class="mt-3">'+n+"</div></div>"}}function send_event(t,e="user_activity"){"function"==typeof gtag&&("object"!=typeof t&&Array.isArray(t)&&null===t||gtag("event",e,t))}function ucwords(t){return t.charAt(0).toUpperCase()+t.slice(1)}$(document).on("submit",".generator-form",(function(t){t.preventDefault();var e=$(".message"),s=$(".gd");e.html("Generating..."),s.attr("disabled","disable");new FormData(document.querySelector(".generator-form"));var a,r,l,n,i=$(this).serialize().split("&"),d=[];i.forEach((function(t,e){var s=decodeURI(t).split("=");"tld[]"===s[0]?a+=s[1]+",":(d[s[0]]=s[1],a=""),i.length-1===e&&(d.tld=a.slice(0,-1))})),n=""==d.domain_keyword?"best":d.domain_keyword,d.dl>0&&d.dl,r="no"===d.sn?"true":"false",l="yes"===d.inb?"true":"false";var o="https://sugapi.verisign-grs.com/ns-api/2.0/suggest?include-registered=false&tlds="+(d.hasOwnProperty("tld")?d.tld:"com")+"&include-suggestion-type=true&sensitive-content-filter="+r+"&use-numbers="+l+"&max-length="+domainLength+"&lang="+lang+"&max-results="+domainLimit+"&name="+n+"&use-idns=false";$.ajax({type:"GET",url:o,dataType:"JSON",error:function(t,a,r){e.html('<div class="alert alert-danger rounded-1 p-2"><i class="bi bi-exclamation-triangle-fill me-1"></i> '+r+" </div>"),s.removeAttr("disabled"),send_event({error:"http_error"},"error")},success:function(t){t.hasOwnProperty("results")?(e.html('<div class="alert alert-success rounded-1 p-2"><i class="bi bi-check-circle-fill me-1"></i> We have generated '+t.results.length+" domain names for you!</div>"),s.removeAttr("disabled"),$("#gd").html(domain_loop(t)),send_event({success:"domain_generate_success"},"success")):(e.html('<div class="alert alert-danger rounded-1 p-2"><i class="bi bi-exclamation-triangle-fill me-1"></i> Failed to generate domain names, please try again later. </div>'),s.removeAttr("disabled"),send_event({error:"domain_generate_error"},"error"))}})})),$(".event").on("click",(function(){var t=$(this)[0].tagName;send_event({tagName:$(this)[0].textContent.trim()},t)}));
