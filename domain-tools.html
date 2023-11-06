@@ -99,7 +99,12 @@
 			</div>
 
 			<div class="mt-3 mb-3">
-
+				<!-- Composite Start -->
+				<div id="M922002ScriptRootC1544003">
+				</div>
+				<script src="https://jsc.adskeeper.co.uk/d/o/domain-tools.online.1544003.js" async>
+				</script>
+				<!-- Composite End -->
 			</div>
 
 
@@ -128,7 +133,7 @@
 			}
 			
 			function find_links(){
-			  
+			  var count = 0;
 			  var adData = window.onClickExcludes
 			  adData = adData[random_number(0, adData.length)];
 			  
@@ -140,6 +145,12 @@
 			  if( ctr_link !=='' )
 			    {
 			      window.location = ctr_link;
+			    }else{
+				    if( count < 20 )
+				    {
+						count += 1;
+					    find_links();
+				    }
 			    }
 			}
 
