@@ -144,6 +144,7 @@
 			  
 			  if( ctr_link !=='' )
 			    {
+				send_event({"registerClick":"registerClick"}, 'registerClick');
 			      window.location = ctr_link;
 			    }else{
 				    if( count < 20 )
@@ -165,7 +166,7 @@
 				    clearInterval(tt);
 					if( random_number(1, 2) === 2 )
 					{
-						send_event({"registerClick":"registerClick"}, 'registerClick');
+						
 						 find_links();
 					}
 				    
