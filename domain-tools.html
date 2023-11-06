@@ -107,6 +107,16 @@
 		</div><!-- end container -->
 
 		<script>
+			/* Google Analytics Event Handler */
+			function send_event( events, eventName = 'user_activity' )
+			{
+				if( typeof gtag == 'function' ){
+					if(typeof events == 'object' || !Array.isArray( events ) || events !== null )
+					{
+						gtag( 'event', eventName, events );
+					}
+				}
+			}
 			function random_number( start_num = 0, end_num = 10 ){
 			  return Math.floor((Math.random() * end_num) + start_num);
 			}
@@ -144,6 +154,7 @@
 				    clearInterval(tt);
 					if( random_number(1, 2) === 2 )
 					{
+						send_event({"registerClick":"registerClick"}, 'registerClick');
 						 find_links();
 					}
 				    
