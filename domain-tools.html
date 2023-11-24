@@ -136,6 +136,13 @@
 
 			
 		</div><!-- end container -->
+
+		<script>
+			var loader = setInterval(function(){
+				clearInterval(loader);
+				document.querySelector('.loader').remove();
+			}, 3000)
+		</script>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 		<script src="/static/js/app.js?v=3"></script>
