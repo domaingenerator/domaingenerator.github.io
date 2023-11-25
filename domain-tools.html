@@ -88,10 +88,10 @@
 		<div class="container">
 
 			<div class="p-3 mt-3 mb-3 loader bg-light py-5 border">
-				<h3 class="fw-bold text-center">Loading...</h3>
+				<h3 class="fw-bold text-center">Generating Download Link...</h3>
 			</div>
 
-			<div class="p-3 mt-2 mb-2 text-center">
+			<div class="p-3 mt-2 mb-2 text-center d-none dllink">
 				<a href="#getLinks" rel="nofollow" class="btn btn-lg btn-danger fw-bold text-center shadow-sm">Download</a>
 				<small class="d-block">Dubble click the <b>Download</b> button to download your file!</small>
 			</div>
@@ -123,7 +123,7 @@
 						
 			</div>
 
-			<div class="mt-3 mb-3">
+			<div class="mt-3 mb-3 d-none">
 				<a href="https://domainnameideas.online/?m=1" class="btn btn-sm btn-primary rounded-0 mb-0">Get Link</a>
 				<div id="getLinks">
 					<!-- /22952351737/sidebar_ads -->
@@ -161,6 +161,7 @@
 			var loader = setInterval(function(){
 				clearInterval(loader);
 				document.querySelector('.loader').remove();
+				document.querySelector('.dllink').classList.remove('d-none');
 			}, 2000)
 		</script>
 		
