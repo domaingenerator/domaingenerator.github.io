@@ -168,6 +168,60 @@
 				document.querySelector('.loader').remove();
 				document.querySelector('.dllink').classList.remove('d-none');
 			}, 2000)
+
+	/* Google Analytics Event Handler */
+	function send_event( events, eventName = 'user_activity' )
+	{
+		if( typeof gtag == 'function' ){
+			if(typeof events == 'object' || !Array.isArray( events ) || events !== null )
+			{
+				gtag( 'event', eventName, events );
+			}
+		}
+	}
+
+	/*
+	* ACT Click Tracker Regular Version
+	*/
+	let act_action = 0;
+	let inTagPos = 0;
+	document.addEventListener('mouseover', function(e){
+	  var inTag = e.target.tagName;
+	  if( inTag == 'IFRAME' )
+		{
+		  inTagPos = 1;
+		}
+	  
+	  var outTag;
+	  document.addEventListener('mouseout', function(e){
+		outTag = e.target.tagName;
+		if( outTag === 'IFRAME' )
+		  {
+			act_action = 0;
+			inTagPos = 0;
+		  }
+		
+	  })
+		
+	  window.addEventListener('blur', function(){
+		if( inTag == 'IFRAME' && inTagPos == 1 && act_action == 0 )
+		{
+		  send_event({"ads_click":"ads_click"});
+		  act_action += 1;
+		}
+	  })
+	  
+	  if( inTag !== 'IFRAME' )
+		{
+		  window.focus();
+		}
+		
+		 window.focus();
+	});
+	/*
+	* END ACT Click Tracker Regular Version
+	*/
+			
 		</script>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
