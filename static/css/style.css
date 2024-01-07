@@ -96,7 +96,7 @@ body {
 	max-height: 100%;
 	height: 90px;
 	bottom: 0;
-	background: #ccc;
+	background: none;
 	transform: translate(calc(50vw - 50%));
 }
 
