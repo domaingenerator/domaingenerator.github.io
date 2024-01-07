@@ -25,6 +25,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet" defer="">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" defer="" />
 		<link rel="stylesheet" href="/static/css/style.css?v=5" type="text/css" />
+		<style>.sticky-ads{ position: fixed; bottom: 0; left: 0; width: 100%; height: 100%; max-height: 100px; padding: 0px 0; box-shadow: 0 -6px 18px 0 rgba(9,32,76,.1); -webkit-transition: all .1s ease-in; transition: all .1s ease-in; display: flex; align-items: center; justify-content: center; background-color: #fefefe; z-index: 99999; }.sticky-ads-close { width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; border-radius: 12px 0 0; position: absolute; right: 0; top: -30px; background-color: #fefefe; box-shadow: 0 -6px 18px 0 rgba(9,32,76,.08); cursor:pointer;} .sticky-ads .sticky-ads-close svg { width: 22px; height: 22px; fill: #000; } .sticky-ads .sticky-ads-content { overflow: hidden; display: block; position: relative; height: 90px; width: 100%;text-align:center}</style>
 	</head>
 	<body>
 		<header class="shadow-sm" id="home">
@@ -601,19 +602,22 @@
 				</div>
 			</div>
 		
-		
-		<div class="sticky-bottom">
-			<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6689194153412880"
-				 crossorigin="anonymous"></script>
-			<!-- 728x90 -->
-			<ins class="adsbygoogle"
-				 style="display:inline-block;width:100%;height:100%"
-				 data-ad-client="ca-pub-6689194153412880"
-				 data-ad-slot="5172146025"></ins>
-			<script>
-				 (adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</div>
+<div class="sticky-ads" id="sticky-ads">
+	<div class="sticky-ads-close" onclick="document.getElementById('sticky-ads').style.display='none'"><svg viewbox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d='M278.6 256l68.2-68.2c6.2-6.2 6.2-16.4 0-22.6-6.2-6.2-16.4-6.2-22.6 0L256 233.4l-68.2-68.2c-6.2-6.2-16.4-6.2-22.6 0-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3l68.2 68.2-68.2 68.2c-3.1 3.1-4.7 7.2-4.7 11.3 0 4.1 1.6 8.2 4.7 11.3 6.2 6.2 16.4 6.2 22.6 0l68.2-68.2 68.2 68.2c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6L278.6 256z'/></svg></div>
+	<div class="sticky-ads-content">
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6689194153412880"
+			 crossorigin="anonymous"></script>
+		<!-- 728x90 -->
+		<ins class="adsbygoogle"
+			 style="display:inline-block;width:100%;height:100%"
+			 data-ad-client="ca-pub-6689194153412880"
+			 data-ad-slot="5172146025"></ins>
+		<script>
+			 (adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+	</div>
+</div>
+
 		
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
