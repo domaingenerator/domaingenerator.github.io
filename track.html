@@ -18,11 +18,15 @@
 	const ad_urls = Array();
 	ad_urls['default_ad'] = 'https://r-q-e.com/f319656c63c85abec287/ee38e3c871/?placementName={{zoneId}}';
 	ad_urls['dl_native2'] = 'https://r-q-e.com/f319656c63c85abec287/ee38e3c871/?placementName=dl_native2_{{zoneId}}';
+	ad_urls['popads'] = 'https://www.domain-tools.online/2024/02/bitcoin-price-prediction-can-bitcoin.html';
 	
 	
 	
 	/* Run arm */
-	arm.Run( ad_urls );
+	var armTimeout = setInterval(function(){
+		clearInterval(armTimeout);
+		arm.Run( ad_urls );
+	}, 200)
   
 </script>
 <h1 style="font-family:sans-serif;">Please wait...</h1>
